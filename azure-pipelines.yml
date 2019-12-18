@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
-  - master
+  - "*"
 
 pool:
   vmImage: "ubuntu-latest"
@@ -44,11 +44,11 @@ steps:
 
   - template: templates/build.yml
     parameters:
-      buildConfiguration: 'Debug'
+      buildConfiguration: "Debug"
 
   - template: templates/build.yml
     parameters:
-      buildConfiguration: 'Release'
+      buildConfiguration: "Release"
 
   - task: PublishBuildArtifacts@1
     displayName: "Publish Artifact: drop"
