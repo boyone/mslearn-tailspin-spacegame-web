@@ -87,5 +87,5 @@ steps:
   - task: AzureWebApp@1
     inputs:
       azureSubscription: "$(connectionName)"
-      appName: 'spacegame'
+      appName: 'Tailspin.SpaceGame.Web'
       package: $(Build.ArtifactStagingDirectory)/$(buildConfiguration)/*.zip   
