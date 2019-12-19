@@ -53,3 +53,11 @@ steps:
   - task: PublishBuildArtifacts@1
     displayName: "Publish Artifact: drop"
     condition: succeeded()
+    
+  - task: AzureWebApp@1
+    inputs:
+      azureSubscription: 'MyAzureServiceConnection'
+      appType: 'webAppLinux'
+      appName: 'spacegame'
+      package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+      runtimeStack: 'DOTNETCORE|2.1'
