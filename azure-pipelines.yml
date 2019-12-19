@@ -10,6 +10,7 @@ variables:
   buildConfiguration: "Release"
   wwwrootDir: "Tailspin.SpaceGame.Web/wwwroot"
   dotnetSdkVersion: "2.1.505"
+  connectionName: MyAzureServiceConnection
 
 steps:
   - task: DotNetCoreInstaller@0
@@ -82,3 +83,9 @@ steps:
   - task: PublishBuildArtifacts@1
     displayName: "Publish Artifact: drop"
     condition: succeeded()
+
+  - task: AzureWebApp@1
+    inputs:
+      azureSubscription: "$(connectionName)"
+      appName: 'spacegame'
+      package: $(Build.ArtifactStagingDirectory)/$(buildConfiguration)/*.zip   
